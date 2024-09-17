@@ -16,12 +16,16 @@ class GerenciadorDeTapes():
                  ) -> None:
         self._calculadora_pontos = calculadora_pontos
         self._calculadora_aluguel = calculadora_aluguel
+        self._type = type
     
     def calcular_pontos(self, dias_alugada:int):
         return self._calculadora_pontos.calcular(dias_alugada)
     
     def calcular_custo_aluguel(self, dias_alugada: int):
         return self._calculadora_aluguel.calcular(dias_alugada)
+    
+    def get_type(self) -> TapeType:
+        return self._type
     
 class GerenciadorDeTapesNormal(GerenciadorDeTapes):
     def __init__(self) -> None:
@@ -52,3 +56,6 @@ class Tape:
     
     def calcular_pontos(self, numeroDias: int) -> int:
         return self._gerenciadorDeTapes.calcular_pontos(numeroDias)
+
+    def get_type(self) -> TapeType:
+        return self._gerenciadorDeTapes.get_type();
